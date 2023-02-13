@@ -27,7 +27,6 @@ public class App {
             System.out.println("Press 7 for information on how to obtain a motorcyle license");
             System.out.println("Press 8 for information on obtaining a commerical driver's license ");
             System.out.println("Press 9 to report a lost or stolen driver's license");
-            System.out.println("Press 10 for general information and FAQs");
 
             // Allowing the user to make a decision
             System.out.print("Please make a decision: ");
@@ -64,9 +63,6 @@ public class App {
                     break;
                 case 9: 
                     options.report_license();
-                    break;
-                case 10:
-                    options.get_general_info();
                     break;
 
                 default: 

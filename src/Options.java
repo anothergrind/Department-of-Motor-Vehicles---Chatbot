@@ -38,8 +38,4 @@ public class Options {
 
     }
 
-    public void get_general_info(){
-
-    }
-
 }
