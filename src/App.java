@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import javax.lang.model.util.ElementScanner14;
 public class App {
     public static void main(String[] args) throws Exception {
         
@@ -38,10 +40,23 @@ public class App {
             // Calling an options method based on user input 
             switch(user_decision){
                 case 1:
-                    options.look_up_car();
+                    String make = input.nextLine();
+                    String model = input.nextLine();
+                    int year = input.nextInt();
+                    options.look_up_car(make, model, year);
                     break;
                 case 2: 
-                    options.renew_car();
+                    System.out.println("Do you want to renew your vehicle?");
+                    boolean questionRenew = input.nextBoolean();
+                    System.out.println("Have you gotten your vehicle approved for the year?");
+                    boolean approvedVehicle = input.nextBoolean();
+                    if(approvedVehicle && questionRenew == true)
+                    {
+                        options.renew_vehicle(true);
+                    }
+                    else{
+                        options.renew_vehicle(false);
+                    }
                     break;
                 case 3:
                     options.sign_up();
@@ -50,7 +65,9 @@ public class App {
                     options.pay();
                     break;
                 case 5: 
-                    options.change_address();
+                    String oldAddress = input.nextLine();
+                    String newAddress = input.nextLine();
+                    options.change_address(oldAddress, newAddress);
                     break;
                 case 6: 
                     options.get_drivers_license();

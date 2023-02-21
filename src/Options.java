@@ -3,24 +3,30 @@
  * in the chatbot
  */
 public class Options {
-    public void look_up_car(){
-
+    public String look_up_car(String make, String model, int year){
+        return "";
     }
 
-    public void renew_car(){
-
+    public boolean renew_vehicle(boolean renew){
+        if(renew == true){
+            return true; 
+        }
+        else
+        {
+            return false;
+        }
     }
 
     public void sign_up(){
 
     }
 
-    public void pay(){
-
+    public int pay(){
+        return 0;
     }
 
-    public void change_address(){
-
+    public String change_address(String oldAddress, String newAddress){
+        return "";
     }
 
     public void get_drivers_license(){
