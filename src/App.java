@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import javax.lang.model.util.ElementScanner14;
 public class App {
     public static void main(String[] args) throws Exception {
         
@@ -20,6 +19,7 @@ public class App {
             }
 
             // List of options that the user has
+            System.out.println("Press 0 to exit the chatbot");
             System.out.println("Press 1 to look up your car");
             System.out.println("Press 2 to renew your car");
             System.out.println("Press 3 to sign up for license test");
@@ -40,15 +40,17 @@ public class App {
             // Calling an options method based on user input 
             switch(user_decision){
                 case 1:
+                    System.out.print("What is the make of your car? ");
                     String make = input.nextLine();
+                    System.out.print("What is the model of your car? ");
                     String model = input.nextLine();
                     int year = input.nextInt();
                     options.look_up_car(make, model, year);
                     break;
                 case 2: 
-                    System.out.println("Do you want to renew your vehicle?");
+                    System.out.print("Do you want to renew your vehicle? ");
                     boolean questionRenew = input.nextBoolean();
-                    System.out.println("Have you gotten your vehicle approved for the year?");
+                    System.out.print("Have you gotten your vehicle approved for the year? ");
                     boolean approvedVehicle = input.nextBoolean();
                     if(approvedVehicle && questionRenew == true)
                     {
@@ -59,13 +61,21 @@ public class App {
                     }
                     break;
                 case 3:
-                    options.sign_up();
+                    System.out.print("Enter your age: ");
+                    int age = input.nextInt();
+                    System.out.print("Do you have a permit? ");
+                    boolean permit = input.nextBoolean();
+                    options.sign_up(age, permit);
                     break;
                 case 4: 
-                    options.pay();
+                    System.out.print("Can you pay the $50 fee for our service: ");
+                    boolean canPay = input.nextBoolean();
+                    options.pay(canPay);
                     break;
                 case 5: 
+                    System.out.print("Add your previous address: ");
                     String oldAddress = input.nextLine();
+                    System.out.print("Add your new address: ");
                     String newAddress = input.nextLine();
                     options.change_address(oldAddress, newAddress);
                     break;
@@ -79,7 +89,9 @@ public class App {
                     options.get_commercial_license();
                     break;
                 case 9: 
-                    options.report_license();
+                    int reportAge = input.nextInt();
+                    String reportName = input.nextLine();
+                    options.report_license(reportName, reportAge);
                     break;
 
                 default: 
