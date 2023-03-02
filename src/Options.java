@@ -3,6 +3,11 @@
  * in the chatbot
  */
 public class Options {
+    public void terminateProgram(){
+        System.out.println("Thank you for visiting and using the DMV chatbot");
+        System.exit(0);
+    }
+    
     public String look_up_car(String make, String model, int year){
         return "Your car " + make + " " + model + " " + year + " is registered in the DMV";
     }

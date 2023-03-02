@@ -7,8 +7,11 @@ public class App {
         try (Scanner input = new Scanner(System.in)) {
             // Brief greeting 
             System.out.println("Welcome to the Department of Motor Vehicles Virtual Assistant also known as DMVA");
-            
-            //Starter question
+            int user_decision = 999;
+
+            while(user_decision != 0)
+            {
+                //Starter question
             System.out.println("How can I assist you today?");
             
             // List that stores the user's options 
@@ -32,71 +35,76 @@ public class App {
 
             // Allowing the user to make a decision
             System.out.print("Please make a decision: ");
-            int user_decision = input.nextInt();
+            user_decision = input.nextInt();
 
             // Creating an object 
             Options options = new Options();
 
             // Calling an options method based on user input 
             switch(user_decision){
-                case 1:
-                    System.out.print("What is the make of your car? ");
-                    String make = input.nextLine();
-                    System.out.print("What is the model of your car? ");
-                    String model = input.nextLine();
-                    int year = input.nextInt();
-                    options.look_up_car(make, model, year);
-                    break;
-                case 2: 
-                    System.out.print("Do you want to renew your vehicle? ");
-                    boolean questionRenew = input.nextBoolean();
-                    System.out.print("Have you gotten your vehicle approved for the year? ");
-                    boolean approvedVehicle = input.nextBoolean();
-                    if(approvedVehicle && questionRenew == true)
-                    {
-                        options.renew_vehicle(true);
-                    }
-                    else{
-                        options.renew_vehicle(false);
-                    }
-                    break;
-                case 3:
-                    System.out.print("Enter your age: ");
-                    int age = input.nextInt();
-                    System.out.print("Do you have a permit? ");
-                    boolean permit = input.nextBoolean();
-                    options.sign_up(age, permit);
-                    break;
-                case 4: 
-                    System.out.print("Can you pay the $50 fee for our service: ");
-                    boolean canPay = input.nextBoolean();
-                    options.pay(canPay);
-                    break;
-                case 5: 
-                    System.out.print("Add your previous address: ");
-                    String oldAddress = input.nextLine();
-                    System.out.print("Add your new address: ");
-                    String newAddress = input.nextLine();
-                    options.change_address(oldAddress, newAddress);
-                    break;
-                case 6: 
-                    options.get_drivers_license();
-                    break;
-                case 7: 
-                    options.get_motorcycle_license();
-                    break;
-                case 8: 
-                    options.get_commercial_license();
-                    break;
-                case 9: 
-                    int reportAge = input.nextInt();
-                    String reportName = input.nextLine();
-                    options.report_license(reportName, reportAge);
-                    break;
+                    case 0: 
+                        options.terminateProgram();
+                    case 1:
+                        System.out.println("What is the make of your car? ");
+                        String make = input.nextLine();
+                        System.out.println("What is the model of your car? ");
+                        String model = input.nextLine();
+                        int year = input.nextInt();
+                        options.look_up_car(make, model, year);
+                        break;
+                    case 2: 
+                        System.out.println("Do you want to renew your vehicle? ");
+                        boolean questionRenew = input.nextBoolean();
+                        System.out.println("Have you gotten your vehicle approved for the year? ");
+                        boolean approvedVehicle = input.nextBoolean();
+                        if(approvedVehicle && questionRenew == true)
+                        {
+                            options.renew_vehicle(true);
+                        }
+                        else{
+                            options.renew_vehicle(false);
+                        }
+                        break;
+                    case 3:
+                        System.out.println("Enter your age: ");
+                        int age = input.nextInt();
+                        System.out.println("Do you have a permit? ");
+                        boolean permit = input.nextBoolean();
+                        options.sign_up(age, permit);
+                        break;
+                    case 4: 
+                        System.out.println("Can you pay the $50 fee for our service: ");
+                        boolean canPay = input.nextBoolean();
+                        options.pay(canPay);
+                        break;
+                    case 5: 
+                        System.out.println("Add your previous address: ");
+                        String oldAddress = input.nextLine();
+                        System.out.println("Add your new address: ");
+                        String newAddress = input.nextLine();
+                        options.change_address(oldAddress, newAddress);
+                        break;
+                    case 6: 
+                        options.get_drivers_license();
+                        break;
+                    case 7: 
+                        options.get_motorcycle_license();
+                        break;
+                    case 8: 
+                        options.get_commercial_license();
+                        break;
+                    case 9: 
+                        System.out.println("What is the person's age that you're reporting");
+                        int reportAge = input.nextInt();
+                        System.out.println("What is the name of the person that you're reporting");
+                        String reportName = input.nextLine();
+                        options.report_license(reportName, reportAge);
+                        break;
 
-                default: 
-                    System.out.println("The option that you selected does not exist. Please try again");
+                    default: 
+                        System.out.println("The option that you selected does not exist. Please try again");
 
+                }
             }
         }
     }
